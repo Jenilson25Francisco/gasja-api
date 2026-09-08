@@ -30,7 +30,7 @@ public class User {
     private OffsetDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "created_at", updatable = false)
-    private OffsetDateTime updateAt;
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt;
 
 }
