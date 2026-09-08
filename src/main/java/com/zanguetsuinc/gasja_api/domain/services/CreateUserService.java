@@ -26,10 +26,14 @@ public class CreateUserService {
     @Transactional
     public User createUser(User user){
 
-        boolean existingUser = userRepository.findByEmail(user.getEmail()).isPresent();
-        if(existingUser){
-            throw new BusinessException("Já existe um utilizador com o email " + user.getEmail());
+        boolean existingUser = userRepository.findByEmail(user.getEmail())
+                .stream()
+                .anyMatch(currentUser -> !currentUser.equals(user));
+
+        if (existingUser){
+            throw  new BusinessException("Já existe um utilizador com o email " + user.getEmail());
         }
+
 
         return userRepository.save(user);
     }

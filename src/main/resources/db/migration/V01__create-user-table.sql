@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "Users" (
+CREATE TABLE IF NOT EXISTS "users" (
     "id" UUID NOT NULL,
     "name" VARCHAR(255) NOT NULL,
     "email" VARCHAR(255) NOT NULL,
@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS "Users" (
     PRIMARY KEY("id")
     );
 
-CREATE UNIQUE INDEX "Users_index_0"
-    ON "Users" ("email");
+CREATE UNIQUE INDEX "users_index"
+    ON "users" ("email");
