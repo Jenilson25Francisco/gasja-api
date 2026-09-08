@@ -11,13 +11,13 @@ import lombok.Setter;
 public class UserRequest {
 
     @NotBlank(message = "O nome completo é obrigatório")
-    @Size(min = 3, message = "O campo nome deve ter no mínimo {min} caracteres")
+    @Size(min = 3, message = "O campo nome deve ter no mínimo 3 caracteres")
     private String name;
     @NotBlank(message = "O email é obrigatório")
     @Email(message = "Digite um e-mail válido")
     private String email;
     @NotBlank(message = "A senha é obrigatória")
-    @Size(min = 5, message = "A senha deve ter no mínimo {min} caracteres")
+    @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
     private String password;
 
 }
