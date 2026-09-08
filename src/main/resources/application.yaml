@@ -3,7 +3,7 @@ spring:
     name: gasja-api
 
     datasource:
-      url: jdbc:postgresql://localhost:5432/gasjadb
+      url: jdbc:postgresql://localhost:5532/gasjadb
       username: postgres
       password: gasjaapp
 
