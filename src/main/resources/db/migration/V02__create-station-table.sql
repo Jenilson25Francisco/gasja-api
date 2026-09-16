@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS "stations" (
     "description" TEXT NOT NULL,
     "phone" VARCHAR(255) NOT NULL,
     "status" VARCHAR(255) NOT NULL,
-    "image_url" VARCHAR(255) NOT NULL,
+    "image_url" VARCHAR(255),
     "created_at" TIMESTAMPTZ NOT NULL,
     "updated_at" TIMESTAMPTZ NOT NULL,
     PRIMARY KEY("id")
