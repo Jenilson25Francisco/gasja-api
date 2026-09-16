@@ -20,7 +20,7 @@ public class CreateUserService {
 
     public User getUser(UUID userId){
         return userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Utilizador nao encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Utilizador não encontrado"));
     }
 
     @Transactional
