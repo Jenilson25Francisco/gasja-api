@@ -2,11 +2,17 @@ spring:
   application:
     name: gasja-api
 
-    datasource:
-      url: jdbc:postgresql://localhost:5532/gasjadb
-      username: postgres
-      password: gasjaapp
+  datasource:
+    url: jdbc:postgresql://localhost:5532/gasjadb
+    username: postgres
+    password: gasjaapp
 
-    jpa:
-      show-sql: true
-      format-sql: true
+  jpa:
+    show-sql: true
+
+cloudinary:
+  cloud_name: {CLOUDINARY_CLOUD_NAME}
+  api_key: {CLOUDINARY_API_KEY}
+  api_secret: {CLOUDINARY_API_SECRET}
+
+
