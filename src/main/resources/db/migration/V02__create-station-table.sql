@@ -5,12 +5,13 @@ CREATE TABLE IF NOT EXISTS "stations" (
     "description" TEXT NOT NULL,
     "phone" VARCHAR(255) NOT NULL,
     "status" VARCHAR(255) NOT NULL,
+    "image_url" VARCHAR(255) NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL,
     "updated_at" TIMESTAMPTZ NOT NULL,
     PRIMARY KEY("id")
     );
 
-CREATE UNIQUE INDEX "Station_index"
+CREATE UNIQUE INDEX "station_index"
     ON "stations" ("phone");
 
 ALTER TABLE "stations"
