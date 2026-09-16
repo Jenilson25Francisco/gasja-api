@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:latest
+    image: postgis/postgis:18-3.6
     environment:
       - POSTGRES_DB=gasjadb
       - POSTGRES_PASSWORD=gasjaapp
