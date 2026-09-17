@@ -3,7 +3,7 @@ package com.zanguetsuinc.gasja_api.domain.services;
 import com.zanguetsuinc.gasja_api.domain.exceptions.BusinessException;
 import com.zanguetsuinc.gasja_api.domain.models.Retailer;
 import com.zanguetsuinc.gasja_api.domain.models.User;
-import com.zanguetsuinc.gasja_api.domain.repositories.StationRepository;
+import com.zanguetsuinc.gasja_api.domain.repositories.RetailerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateRetailerService {
 
     private final CreateUserService userService;
-    private final StationRepository stationRepository;
+    private final RetailerRepository retailerRepository;
 
-    public CreateRetailerService(CreateUserService userService, StationRepository stationRepository) {
+    public CreateRetailerService(CreateUserService userService, RetailerRepository retailerRepository) {
         this.userService = userService;
-        this.stationRepository = stationRepository;
+        this.retailerRepository = retailerRepository;
     }
 
     @Transactional
@@ -23,7 +23,7 @@ public class CreateRetailerService {
 
         User user = userService.getUser(retailer.getId());
 
-        boolean existsStation = stationRepository.findByPhone(retailer.getPhone())
+        boolean existsStation = retailerRepository.findByPhone(retailer.getPhone())
                         .stream().anyMatch(myRetailer -> !myRetailer.equals(retailer));
 
         if (existsStation){
@@ -31,7 +31,7 @@ public class CreateRetailerService {
         }
 
         retailer.setId(user.getId());
-        return stationRepository.save(retailer);
+        return retailerRepository.save(retailer);
 
     }
 }

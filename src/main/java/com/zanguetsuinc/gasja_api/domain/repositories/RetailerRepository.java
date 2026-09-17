@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface StationRepository extends JpaRepository<Retailer, UUID> {
+public interface RetailerRepository extends JpaRepository<Retailer, UUID> {
 
     Optional<Retailer> findByPhone(String phone);
 
