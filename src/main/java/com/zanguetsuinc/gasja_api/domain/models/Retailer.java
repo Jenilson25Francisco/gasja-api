@@ -14,8 +14,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "stations")
-public class Station {
+@Table(name = "retailers")
+public class Retailer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,6 +23,9 @@ public class Station {
     private String name;
     private String description;
     private String phone;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Enumerated(EnumType.STRING)
     private StationStatus status;
@@ -41,8 +44,8 @@ public class Station {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Station station = (Station) o;
-        return Objects.equals(id, station.id);
+        Retailer retailer = (Retailer) o;
+        return Objects.equals(id, retailer.id);
     }
 
     @Override
