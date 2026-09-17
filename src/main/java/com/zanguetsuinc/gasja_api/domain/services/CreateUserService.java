@@ -18,8 +18,8 @@ public class CreateUserService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(UUID userId){
-        return userRepository.findById(userId)
+    public User getUserById(UUID ownerId){
+        return userRepository.findById(ownerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Utilizador não encontrado"));
     }
 
