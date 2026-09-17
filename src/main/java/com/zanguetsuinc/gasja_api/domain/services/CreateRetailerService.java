@@ -1,5 +1,6 @@
 package com.zanguetsuinc.gasja_api.domain.services;
 
+import com.zanguetsuinc.gasja_api.domain.enums.RetailerStatus;
 import com.zanguetsuinc.gasja_api.domain.exceptions.BusinessException;
 import com.zanguetsuinc.gasja_api.domain.models.Retailer;
 import com.zanguetsuinc.gasja_api.domain.models.User;
@@ -19,9 +20,7 @@ public class CreateRetailerService {
     }
 
     @Transactional
-    public Retailer createStation(Retailer retailer){
-
-        User user = userService.getUser(retailer.getId());
+    public Retailer createRetailer(Retailer retailer){
 
         boolean existsStation = retailerRepository.findByPhone(retailer.getPhone())
                         .stream().anyMatch(myRetailer -> !myRetailer.equals(retailer));
@@ -30,7 +29,10 @@ public class CreateRetailerService {
             throw new BusinessException("Já existe um posto com o telefone " + retailer.getPhone());
         }
 
-        retailer.setId(user.getId());
+        User user = userService.getUserById(retailer.getOwner().getId());
+
+        retailer.setOwner(user);
+        retailer.setStatus(RetailerStatus.OPEN);
         return retailerRepository.save(retailer);
 
     }
