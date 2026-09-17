@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CreateStationService {
+public class CreateRetailerService {
 
     private final CreateUserService userService;
     private final StationRepository stationRepository;
 
-    public CreateStationService(CreateUserService userService, StationRepository stationRepository) {
+    public CreateRetailerService(CreateUserService userService, StationRepository stationRepository) {
         this.userService = userService;
         this.stationRepository = stationRepository;
     }
