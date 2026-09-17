@@ -13,7 +13,7 @@ public class RetailerRequest {
 
     @Valid
     @NotNull(message = "por favor digite o id do utilizador")
-    private UserIdRequest user;
+    private UserIdRequest owner;
     @NotBlank(message = "O nome do posto de venda é obrigatório")
     @Size(max = 255, message = "o nome do posto só pode ter 255 caracteres")
     private String name;
