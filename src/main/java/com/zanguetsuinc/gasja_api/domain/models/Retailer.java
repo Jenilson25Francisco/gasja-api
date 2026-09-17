@@ -1,6 +1,6 @@
 package com.zanguetsuinc.gasja_api.domain.models;
 
-import com.zanguetsuinc.gasja_api.domain.enums.StationStatus;
+import com.zanguetsuinc.gasja_api.domain.enums.RetailerStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +28,7 @@ public class Retailer {
     private String imageUrl;
 
     @Enumerated(EnumType.STRING)
-    private StationStatus status;
+    private RetailerStatus status;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
