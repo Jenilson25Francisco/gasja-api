@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "stations" (
+CREATE TABLE IF NOT EXISTS "retailers" (
     "id" UUID NOT NULL,
     "user_id" UUID NOT NULL,
     "name" VARCHAR(255) NOT NULL,
@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS "stations" (
     PRIMARY KEY("id")
     );
 
-CREATE UNIQUE INDEX "station_index"
-    ON "stations" ("phone");
+CREATE UNIQUE INDEX "retailer_index"
+    ON "retailers" ("phone");
 
-ALTER TABLE "stations"
+ALTER TABLE "retailers"
     ADD FOREIGN KEY("user_id") REFERENCES "users"("id")
         ON UPDATE NO ACTION ON DELETE NO ACTION;
