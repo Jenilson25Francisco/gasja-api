@@ -1,13 +1,11 @@
 package com.zanguetsuinc.gasja_api.domain.services;
 
 import com.zanguetsuinc.gasja_api.domain.exceptions.BusinessException;
-import com.zanguetsuinc.gasja_api.domain.models.Station;
+import com.zanguetsuinc.gasja_api.domain.models.Retailer;
 import com.zanguetsuinc.gasja_api.domain.models.User;
 import com.zanguetsuinc.gasja_api.domain.repositories.StationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.UUID;
 
 @Service
 public class CreateStationService {
@@ -21,19 +19,19 @@ public class CreateStationService {
     }
 
     @Transactional
-    public Station createStation(Station station){
+    public Retailer createStation(Retailer retailer){
 
-        User user = userService.getUser(station.getId());
+        User user = userService.getUser(retailer.getId());
 
-        boolean existsStation = stationRepository.findByPhone(station.getPhone())
-                        .stream().anyMatch(myStation -> !myStation.equals(station));
+        boolean existsStation = stationRepository.findByPhone(retailer.getPhone())
+                        .stream().anyMatch(myRetailer -> !myRetailer.equals(retailer));
 
         if (existsStation){
-            throw new BusinessException("Já existe um posto com o telefone " + station.getPhone());
+            throw new BusinessException("Já existe um posto com o telefone " + retailer.getPhone());
         }
 
-        station.setId(user.getId());
-        return stationRepository.save(station);
+        retailer.setId(user.getId());
+        return stationRepository.save(retailer);
 
     }
 }
