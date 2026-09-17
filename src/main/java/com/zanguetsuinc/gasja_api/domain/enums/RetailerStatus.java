@@ -1,6 +1,6 @@
 package com.zanguetsuinc.gasja_api.domain.enums;
 
-public enum StationStatus {
+public enum RetailerStatus {
 
     CLOSED, OPEN, UNDER_MAINTENANCE
 
