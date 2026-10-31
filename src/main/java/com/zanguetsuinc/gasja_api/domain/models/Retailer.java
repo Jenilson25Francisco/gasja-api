@@ -27,6 +27,9 @@ public class Retailer {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "public_id")
+    private String publicId;
+
     @Enumerated(EnumType.STRING)
     private RetailerStatus status;
 

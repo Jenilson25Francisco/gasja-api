@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<ErrorMessage> handelBusinessException(BusinessException ex){
+    public ResponseEntity<ErrorMessage> handleBusinessException(BusinessException ex){
         ErrorMessage errorMessage = new ErrorMessage(
                 OffsetDateTime.now(),
                 400,
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleResourceNotfoundException(ResourceNotFoundException ex){
+    public ResponseEntity<ErrorMessage> handleResourceNotFoundException(ResourceNotFoundException ex){
         ErrorMessage errorMessage = new ErrorMessage(
                 OffsetDateTime.now(),
                 404,

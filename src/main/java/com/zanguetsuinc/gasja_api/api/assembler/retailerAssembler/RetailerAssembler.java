@@ -1,6 +1,7 @@
 package com.zanguetsuinc.gasja_api.api.assembler.retailerAssembler;
 
 import com.zanguetsuinc.gasja_api.api.dto.request.RetailerRequest;
+import com.zanguetsuinc.gasja_api.api.dto.response.RetailerDetailsResponse;
 import com.zanguetsuinc.gasja_api.api.dto.response.RetailerResponse;
 import com.zanguetsuinc.gasja_api.domain.models.Retailer;
 import org.modelmapper.ModelMapper;
@@ -17,6 +18,10 @@ public class RetailerAssembler {
 
     public RetailerResponse toResponse(Retailer retailer){
         return modelMapper.map(retailer, RetailerResponse.class);
+    }
+
+    public RetailerDetailsResponse toDetailsResponse(Retailer retailer){
+        return modelMapper.map(retailer, RetailerDetailsResponse.class);
     }
 
     public Retailer toRequest(RetailerRequest retailerRequest){
