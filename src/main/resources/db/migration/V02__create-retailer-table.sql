@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS "retailers" (
     "phone" VARCHAR(255) NOT NULL,
     "status" VARCHAR(255) NOT NULL,
     "image_url" VARCHAR(255),
+    "public_id" VARCHAR(255),
     "created_at" TIMESTAMPTZ NOT NULL,
     "updated_at" TIMESTAMPTZ NOT NULL,
     PRIMARY KEY("id")

@@ -7,6 +7,7 @@ import com.zanguetsuinc.gasja_api.domain.services.CreateRetailerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/retailers")
@@ -22,9 +23,13 @@ public class RetailerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RetailerResponse saveRetailer(@Valid @RequestBody RetailerRequest retailerRequest){
-        var retailer = retailerAssembler.toRequest(retailerRequest);
-        var createdRetailer = retailerService.createRetailer(retailer);
-        return retailerAssembler.toResponse(createdRetailer);
+    public RetailerResponse saveRetailer(@Valid @RequestPart("dados") RetailerRequest retailerRequest,
+                                         @RequestPart(value = "file", required = false) MultipartFile file) throws Exception {
+
+        var savingRetailer = retailerAssembler.toRequest(retailerRequest);
+        var retailer = retailerService.createRetailer(savingRetailer, file);
+
+        return retailerAssembler.toResponse(retailer);
+
     }
 }

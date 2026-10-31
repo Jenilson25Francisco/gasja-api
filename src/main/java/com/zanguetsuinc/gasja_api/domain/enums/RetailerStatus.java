@@ -2,6 +2,6 @@ package com.zanguetsuinc.gasja_api.domain.enums;
 
 public enum RetailerStatus {
 
-    CLOSED, OPEN, UNDER_MAINTENANCE
+    CLOSED, OPEN, UNDER_MAINTENANCE, PENDING_APPROVAL
 
 }
