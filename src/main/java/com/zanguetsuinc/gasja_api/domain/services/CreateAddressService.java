@@ -26,7 +26,7 @@ public class CreateAddressService {
         }
 
         if (longitude.compareTo(BigDecimal.valueOf(-180)) < 0 || longitude.compareTo(BigDecimal.valueOf(180)) > 0){
-            throw  new BusinessException("longitude inválida");
+            throw new BusinessException("longitude inválida");
         }
 
     }
