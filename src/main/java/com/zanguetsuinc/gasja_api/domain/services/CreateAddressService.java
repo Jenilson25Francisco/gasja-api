@@ -17,7 +17,6 @@ public class CreateAddressService {
 
     private void validateCoordinates(BigDecimal longitude, BigDecimal latitude){
 
-
         if (latitude == null || longitude == null) {
             throw new BusinessException("Latitude e longitude são obrigatórias");
         }
