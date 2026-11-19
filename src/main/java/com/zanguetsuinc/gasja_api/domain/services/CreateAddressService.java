@@ -17,31 +17,20 @@ public class CreateAddressService {
         this.addressRepository = addressRepository;
     }
 
-    private void validateCoordinates(BigDecimal longitude, BigDecimal latitude){
-
-        if (latitude == null || longitude == null) {
-            throw new BusinessException("Latitude e longitude são obrigatórias");
-        }
-
-        if (latitude.compareTo(BigDecimal.valueOf(-90)) < 0 || latitude.compareTo(BigDecimal.valueOf(90)) > 0){
-            throw  new BusinessException("Latitude inválida");
-        }
-
-        if (longitude.compareTo(BigDecimal.valueOf(-180)) < 0 || longitude.compareTo(BigDecimal.valueOf(180)) > 0){
-            throw new BusinessException("longitude inválida");
-        }
-
-    }
-
     @Transactional
-    public Address addAddress(Address address) {
-        validateCoordinates(
-                BigDecimal.valueOf(address.getLocalization().getX()),
-                BigDecimal.valueOf(address.getLocalization().getY())
-        );
+    public Address execute(Address address) {
+        if (address.getLocalization() == null) {
+            throw new BusinessException("Localization is required");
+        }
 
+        if (address.getLocalization().getX() < -180 || address.getLocalization().getX() > 180) {
+            throw new BusinessException("Longitude must be between -180 and 180");
+        }
+
+        if (address.getLocalization().getY() < -90 || address.getLocalization().getY() > 90) {
+            throw new BusinessException("Latitude must be between -90 and 90");
+        }
 
         return addressRepository.save(address);
     }
-
 }
