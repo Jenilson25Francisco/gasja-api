@@ -1,8 +1,10 @@
 package com.zanguetsuinc.gasja_api.domain.services;
 
 import com.zanguetsuinc.gasja_api.domain.exceptions.BusinessException;
+import com.zanguetsuinc.gasja_api.domain.models.Address;
 import com.zanguetsuinc.gasja_api.domain.repositories.AddressRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -29,6 +31,17 @@ public class CreateAddressService {
             throw new BusinessException("longitude inválida");
         }
 
+    }
+
+    @Transactional
+    public Address addAddress(Address address) {
+        validateCoordinates(
+                BigDecimal.valueOf(address.getLocalization().getX()),
+                BigDecimal.valueOf(address.getLocalization().getY())
+        );
+
+
+        return addressRepository.save(address);
     }
 
 }
